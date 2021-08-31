@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ifood/core/theme/app_icons.dart';
 import 'package:ifood/views/content/components/header_local_component.dart';
 
 import 'components/bottom_navigator_component.dart';
@@ -39,6 +40,31 @@ class _ContentPageState extends State<ContentPage>
             ],
           ),
         ),
+        BottomNavigatorComponent(
+          currentIndex: 0,
+          items: [
+            BottomNavigatorItemComponent(
+              activeIcon: AppIcons.homeActive,
+              icon: AppIcons.home,
+              label: 'Início',
+            ),
+            BottomNavigatorItemComponent(
+              activeIcon: AppIcons.homeActive,
+              icon: AppIcons.home,
+              label: 'Início',
+            ),
+            BottomNavigatorItemComponent(
+              activeIcon: AppIcons.homeActive,
+              icon: AppIcons.home,
+              label: 'Início',
+            ),
+            BottomNavigatorItemComponent(
+              activeIcon: AppIcons.homeActive,
+              icon: AppIcons.home,
+              label: 'Início',
+            )
+          ],
+        )
       ],
     ));
   }

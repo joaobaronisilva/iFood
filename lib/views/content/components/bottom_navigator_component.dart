@@ -39,6 +39,16 @@ class BottomNavigatorItemComponent extends StatelessWidget {
   BottomNavigatorItemComponent(
       {this.label, this.activeIcon, this.icon, this.isActive = false});
 
+  BottomNavigatorItemComponent copyWith(
+      {String? label, String? activeIcon, String? icon, bool? isActive}) {
+    return BottomNavigatorItemComponent(
+      activeIcon: activeIcon ?? this.activeIcon,
+      icon: icon ?? this.icon,
+      isActive: isActive ?? this.isActive,
+      label: label ?? this.label,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
