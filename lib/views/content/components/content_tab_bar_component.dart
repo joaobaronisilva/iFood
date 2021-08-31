@@ -5,8 +5,9 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class ContentTabBarComponent extends StatelessWidget {
   final TabController? controller;
+  final Function(int)? onTap;
 
-  ContentTabBarComponent(this.controller);
+  ContentTabBarComponent({this.controller, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class ContentTabBarComponent extends StatelessWidget {
           labelPadding: EdgeInsets.zero,
           labelColor: AppColors.primaryColor,
           controller: controller,
+          onTap: onTap,
           unselectedLabelColor: AppColors.black54,
           overlayColor: MaterialStateProperty.all(Colors.transparent),
           labelStyle: AppTypography.tabBarStyle(context),

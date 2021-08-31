@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ifood/core/theme/app_colors.dart';
-import 'package:ifood/core/theme/app_typography.dart';
 import 'package:ifood/views/content/components/header_local_component.dart';
-import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
+import 'components/bottom_navigator_component.dart';
 import 'components/content_tab_bar_component.dart';
 
 class ContentPage extends StatefulWidget {
@@ -28,10 +26,20 @@ class _ContentPageState extends State<ContentPage>
     return Scaffold(
         body: Column(
       children: [
-        HeaderLocationComponent(
-          location: 'Avenida 22, 1511',
+        Expanded(
+          child: Column(
+            children: [
+              HeaderLocationComponent(
+                location: 'Avenida 22, 1511',
+              ),
+              ContentTabBarComponent(
+                controller: tabController,
+                onTap: (index) {},
+              )
+            ],
+          ),
         ),
-        ContentTabBarComponent(tabController)
+        BottomNavigatorComponent()
       ],
     ));
   }

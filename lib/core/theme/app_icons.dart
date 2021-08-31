@@ -5,6 +5,7 @@ const String pathIcons = 'assets/icons/';
 
 class AppIcons {
   static const arrowDown = '${pathIcons}arrow_down.svg';
+  static const homeActive = '${pathIcons}bottom/home_active.svg';
 }
 
 class AppIcon extends StatelessWidget {
