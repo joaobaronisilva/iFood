@@ -22,6 +22,8 @@ class _ContentPageState extends State<ContentPage>
     super.initState();
   }
 
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,12 @@ class _ContentPageState extends State<ContentPage>
           ),
         ),
         BottomNavigatorComponent(
-          currentIndex: 0,
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
           items: [
             BottomNavigatorItemComponent(
               activeIcon: AppIcons.homeActive,

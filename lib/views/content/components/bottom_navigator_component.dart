@@ -5,8 +5,10 @@ import 'package:ifood/core/theme/app_icons.dart';
 class BottomNavigatorComponent extends StatelessWidget {
   final List<BottomNavigatorItemComponent> items;
   final int currentIndex;
+  final Function(int) onTap;
 
-  BottomNavigatorComponent({required this.items, required this.currentIndex});
+  BottomNavigatorComponent(
+      {required this.items, this.currentIndex = 0, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,12 @@ class BottomNavigatorComponent extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: items,
+              children: items
+                  .map((e) => e.copyWith(
+                        isActive: items.indexOf(e) == currentIndex,
+                        onTap: () => onTap(items.indexOf(e)),
+                      ))
+                  .toList(),
             ),
           ),
           SizedBox(
@@ -35,29 +42,43 @@ class BottomNavigatorItemComponent extends StatelessWidget {
   final String? activeIcon;
   final String? icon;
   final bool isActive;
+  final Function()? onTap;
 
   BottomNavigatorItemComponent(
-      {this.label, this.activeIcon, this.icon, this.isActive = false});
+      {this.label,
+      this.activeIcon,
+      this.icon,
+      this.isActive = false,
+      this.onTap});
 
-  BottomNavigatorItemComponent copyWith(
-      {String? label, String? activeIcon, String? icon, bool? isActive}) {
+  BottomNavigatorItemComponent copyWith({
+    String? label,
+    String? activeIcon,
+    String? icon,
+    bool? isActive,
+    Function()? onTap,
+  }) {
     return BottomNavigatorItemComponent(
       activeIcon: activeIcon ?? this.activeIcon,
       icon: icon ?? this.icon,
       isActive: isActive ?? this.isActive,
       label: label ?? this.label,
+      onTap: onTap ?? this.onTap,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        children: [
-          AppIcon(isActive ? activeIcon : icon),
-          Text(label ?? 'Not found'),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            AppIcon(isActive ? activeIcon : icon),
+            Text(label ?? 'Not found'),
+          ],
+        ),
       ),
     );
   }
