@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app.dart';
+import 'core/theme/app_theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,9 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'iFood',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: AppTheme.theme,
       home: App(),
     );
   }

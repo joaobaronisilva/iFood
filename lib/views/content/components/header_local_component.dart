@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ifood/core/theme/app_colors.dart';
 import 'package:ifood/core/theme/app_icons.dart';
+import 'package:ifood/core/theme/app_typography.dart';
 
 class HeaderLocationComponent extends StatelessWidget {
   final String location;
@@ -20,7 +21,10 @@ class HeaderLocationComponent extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
                 children: [
-                  Text('Rua das Flores do Campo, 10'),
+                  Text(
+                    location,
+                    style: AppTypography.localTextStyle(context),
+                  ),
                   AppIcon(
                     AppIcons.arrowDown,
                     size: Size(20, 20),
