@@ -9,7 +9,7 @@ class AppIcons {
 }
 
 class AppIcon extends StatelessWidget {
-  final String icon;
+  final String? icon;
   final Size? size;
   final Color? color;
   AppIcon(this.icon, {this.size, this.color});
@@ -17,7 +17,7 @@ class AppIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      icon,
+      icon ?? '',
       height: size?.height ?? 24,
       width: size?.width ?? 24,
       color: color ?? Colors.black,
