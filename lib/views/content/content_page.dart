@@ -4,6 +4,8 @@ import 'package:ifood/core/theme/app_typography.dart';
 import 'package:ifood/views/content/components/header_local_component.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
+import 'components/content_tab_bar_component.dart';
+
 class ContentPage extends StatefulWidget {
   const ContentPage({Key? key}) : super(key: key);
 
@@ -29,31 +31,7 @@ class _ContentPageState extends State<ContentPage>
         HeaderLocationComponent(
           location: 'Avenida 22, 1511',
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 180),
-          child: TabBar(
-              labelPadding: EdgeInsets.zero,
-              labelColor: AppColors.primaryColor,
-              controller: tabController,
-              unselectedLabelColor: AppColors.black54,
-              labelStyle: AppTypography.tabBarStyle(context),
-              indicator: MaterialIndicator(
-                  color: AppColors.primaryColor,
-                  height: 2,
-                  bottomLeftRadius: 5,
-                  bottomRightRadius: 5),
-              tabs: [
-                Tab(
-                  child: Align(
-                      child: Text('Restaurantes'),
-                      alignment: Alignment.centerLeft),
-                ),
-                Tab(
-                  child: Align(
-                      child: Text('Mercados'), alignment: Alignment.centerLeft),
-                ),
-              ]),
-        )
+        ContentTabBarComponent(tabController)
       ],
     ));
   }
