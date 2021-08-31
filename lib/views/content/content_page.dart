@@ -33,11 +33,11 @@ class _ContentPageState extends State<ContentPage>
           padding: const EdgeInsets.only(left: 16, right: 180),
           child: TabBar(
               labelPadding: EdgeInsets.zero,
-              labelColor: AppColors.black,
+              labelColor: AppColors.primaryColor,
               controller: tabController,
               unselectedLabelColor: AppColors.black54,
               labelStyle: AppTypography.bodyText(context)
-                  ?.copyWith(color: Colors.black),
+                  ?.copyWith(color: AppColors.primaryColor),
               indicator: MaterialIndicator(
                   color: AppColors.primaryColor,
                   height: 2,
