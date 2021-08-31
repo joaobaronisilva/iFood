@@ -36,8 +36,7 @@ class _ContentPageState extends State<ContentPage>
               labelColor: AppColors.primaryColor,
               controller: tabController,
               unselectedLabelColor: AppColors.black54,
-              labelStyle: AppTypography.bodyText(context)
-                  ?.copyWith(color: AppColors.primaryColor),
+              labelStyle: AppTypography.tabBarStyle(context),
               indicator: MaterialIndicator(
                   color: AppColors.primaryColor,
                   height: 2,
