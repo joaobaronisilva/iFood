@@ -11,6 +11,21 @@ class ContentTabBarComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return SliverPersistentHeader(
+        delegate: _ContentTabBarComponentDelegate(
+            controller: controller, onTap: onTap));
+  }
+}
+
+class _ContentTabBarComponentDelegate extends SliverPersistentHeaderDelegate {
+  final TabController? controller;
+  final Function(int)? onTap;
+
+  _ContentTabBarComponentDelegate({this.controller, this.onTap});
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 180),
       child: TabBar(
@@ -37,5 +52,16 @@ class ContentTabBarComponent extends StatelessWidget {
             ),
           ]),
     );
+  }
+
+  @override
+  double get maxExtent => 38;
+
+  @override
+  double get minExtent => 38;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }

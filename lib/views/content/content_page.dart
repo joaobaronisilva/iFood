@@ -33,24 +33,15 @@ class _ContentPageState extends State<ContentPage>
           return [
             HeaderLocationComponent(
               location: 'Avenida 22, 1511',
+            ),
+            ContentTabBarComponent(
+              controller: tabController,
+              onTap: (index) {},
             )
           ];
         },
         body: Column(
           children: [
-            Expanded(
-              child: Column(
-                children: [
-                  HeaderLocationComponent(
-                    location: 'Avenida 22, 1511',
-                  ),
-                  ContentTabBarComponent(
-                    controller: tabController,
-                    onTap: (index) {},
-                  )
-                ],
-              ),
-            ),
             BottomNavigatorComponent(
               currentIndex: _currentIndex,
               onTap: (index) {
