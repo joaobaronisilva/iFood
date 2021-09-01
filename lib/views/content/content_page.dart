@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ifood/controllers/content_controller.dart';
 import 'package:ifood/core/theme/app_icons.dart';
+import 'package:ifood/models/category.dart';
 import 'package:ifood/views/content/components/header_local_component.dart';
 
 import 'components/bottom_navigator_component.dart';
@@ -16,10 +18,13 @@ class ContentPage extends StatefulWidget {
 class _ContentPageState extends State<ContentPage>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
+  final controller = ContentController();
+  List<Category> categorys = [];
 
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
+    categorys = controller.getCategorys();
     super.initState();
   }
 
@@ -53,13 +58,14 @@ class _ContentPageState extends State<ContentPage>
                           height: 86,
                           child: ListView.builder(
                             physics: BouncingScrollPhysics(),
-                            itemCount: 20,
+                            itemCount: categorys.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) => Padding(
                               padding: EdgeInsets.only(
                                   left: index == 0 ? 16 : 0,
-                                  right: index == 20 - 1 ? 16 : 8),
-                              child: CategoryItemComponent(),
+                                  right:
+                                      index == categorys.length - 1 ? 16 : 8),
+                              child: CategoryItemComponent(categorys[index]),
                             ),
                           )),
                     )
