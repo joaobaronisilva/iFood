@@ -9,6 +9,7 @@ class AppIcons {
   static const home = '${pathIcons}bottom/home.svg';
   static const ordersActive = '${pathIcons}bottom/orders_active.svg';
   static const orders = '${pathIcons}bottom/orders.svg';
+  static const profileActive = '${pathIcons}bottom/profile_active.svg';
   static const profile = '${pathIcons}bottom/profile.svg';
   static const searchActive = '${pathIcons}bottom/search_active.svg';
   static const search = '${pathIcons}bottom/search.svg';

@@ -10,11 +10,21 @@ class HeaderLocationComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return SliverPersistentHeader(
+      delegate: _HeaderLocationComponentDelegate(location: location),
+    );
+  }
+}
+
+class _HeaderLocationComponentDelegate extends SliverPersistentHeaderDelegate {
+  final String? location;
+  _HeaderLocationComponentDelegate({this.location});
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       child: Column(children: [
-        SizedBox(
-          height: MediaQuery.of(context).padding.top,
-        ),
         Row(
           children: [
             Padding(
@@ -22,7 +32,7 @@ class HeaderLocationComponent extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    location,
+                    location ?? 'Sua localização',
                     style: AppTypography.localTextStyle(context),
                   ),
                   AppIcon(
@@ -37,5 +47,16 @@ class HeaderLocationComponent extends StatelessWidget {
         )
       ]),
     );
+  }
+
+  @override
+  double get maxExtent => 38;
+
+  @override
+  double get minExtent => 38;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }

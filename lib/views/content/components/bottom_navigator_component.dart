@@ -76,7 +76,12 @@ class BottomNavigatorItemComponent extends StatelessWidget {
         child: Column(
           children: [
             AppIcon(isActive ? activeIcon : icon),
-            Text(label ?? 'Not found'),
+            Text(
+              label ?? '',
+              style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: isActive ? FontWeight.bold : FontWeight.normal),
+            ),
           ],
         ),
       ),

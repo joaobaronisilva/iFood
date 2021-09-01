@@ -27,52 +27,63 @@ class _ContentPageState extends State<ContentPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        body: SafeArea(
+      child: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            HeaderLocationComponent(
+              location: 'Avenida 22, 1511',
+            )
+          ];
+        },
         body: Column(
-      children: [
-        Expanded(
-          child: Column(
-            children: [
-              HeaderLocationComponent(
-                location: 'Avenida 22, 1511',
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  HeaderLocationComponent(
+                    location: 'Avenida 22, 1511',
+                  ),
+                  ContentTabBarComponent(
+                    controller: tabController,
+                    onTap: (index) {},
+                  )
+                ],
               ),
-              ContentTabBarComponent(
-                controller: tabController,
-                onTap: (index) {},
-              )
-            ],
-          ),
-        ),
-        BottomNavigatorComponent(
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          items: [
-            BottomNavigatorItemComponent(
-              activeIcon: AppIcons.homeActive,
-              icon: AppIcons.home,
-              label: 'Início',
             ),
-            BottomNavigatorItemComponent(
-              activeIcon: AppIcons.homeActive,
-              icon: AppIcons.home,
-              label: 'Início',
-            ),
-            BottomNavigatorItemComponent(
-              activeIcon: AppIcons.homeActive,
-              icon: AppIcons.home,
-              label: 'Início',
-            ),
-            BottomNavigatorItemComponent(
-              activeIcon: AppIcons.homeActive,
-              icon: AppIcons.home,
-              label: 'Início',
+            BottomNavigatorComponent(
+              currentIndex: _currentIndex,
+              onTap: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+              items: [
+                BottomNavigatorItemComponent(
+                  activeIcon: AppIcons.homeActive,
+                  icon: AppIcons.home,
+                  label: 'Início',
+                ),
+                BottomNavigatorItemComponent(
+                  activeIcon: AppIcons.searchActive,
+                  icon: AppIcons.search,
+                  label: 'Busca',
+                ),
+                BottomNavigatorItemComponent(
+                  activeIcon: AppIcons.ordersActive,
+                  icon: AppIcons.orders,
+                  label: 'Pedidos',
+                ),
+                BottomNavigatorItemComponent(
+                  activeIcon: AppIcons.profileActive,
+                  icon: AppIcons.profile,
+                  label: 'Perfil',
+                )
+              ],
             )
           ],
-        )
-      ],
+        ),
+      ),
     ));
   }
 }
