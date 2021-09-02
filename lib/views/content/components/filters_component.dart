@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ifood/core/theme/app_colors.dart';
+import 'package:ifood/core/theme/app_icons.dart';
 import 'package:ifood/core/theme/app_typography.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
@@ -24,11 +25,23 @@ class _FiltersComponentDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      color: AppColors.primaryColor,
+      color: AppColors.white,
       height: 54,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        children: [],
+        children: [
+          SizedBox(width: 16),
+          FilterItemComponent(
+            label: 'Ordenar',
+          ),
+          FilterItemComponent(
+            label: 'Ordenar',
+          ),
+          FilterItemComponent(
+            label: 'Ordenar',
+          ),
+          SizedBox(width: 16),
+        ],
       ),
     );
   }
@@ -46,10 +59,31 @@ class _FiltersComponentDelegate extends SliverPersistentHeaderDelegate {
 }
 
 class FilterItemComponent extends StatelessWidget {
-  const FilterItemComponent({Key? key}) : super(key: key);
+  final String label;
+  final String? icon;
+
+  FilterItemComponent({required this.label, this.icon = ''});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: EdgeInsets.only(top: 12, bottom: 12, right: 8),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(32), color: Colors.blue),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          child: Row(
+            children: [
+              Text(
+                label,
+                style: TextStyle(color: Colors.grey[700]),
+              ),
+              if (icon != '') AppIcon(icon)
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
