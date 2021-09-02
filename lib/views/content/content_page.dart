@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ifood/controllers/content_controller.dart';
+import 'package:ifood/core/theme/app_colors.dart';
 import 'package:ifood/core/theme/app_icons.dart';
 import 'package:ifood/models/category.dart';
 import 'package:ifood/views/content/components/header_local_component.dart';
@@ -33,77 +34,83 @@ class _ContentPageState extends State<ContentPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColors.white,
         body: SafeArea(
-      child: NestedScrollView(
-          physics: BouncingScrollPhysics(),
-          headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return [
-              HeaderLocationComponent(
-                location: 'Avenida 22, 1511',
-              ),
-              ContentTabBarComponent(
-                controller: tabController,
-                onTap: (index) {},
-              )
-            ];
-          },
-          body: Column(
-            children: [
-              Expanded(
-                child: CustomScrollView(
-                  physics: BouncingScrollPhysics(),
-                  slivers: [
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                          height: 86,
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            itemCount: categorys.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) => Padding(
-                              padding: EdgeInsets.only(
-                                  left: index == 0 ? 16 : 0,
-                                  right:
-                                      index == categorys.length - 1 ? 16 : 8),
-                              child: CategoryItemComponent(categorys[index]),
-                            ),
-                          )),
-                    )
-                  ],
-                ),
-              ),
-              BottomNavigatorComponent(
-                currentIndex: _currentIndex,
-                onTap: (index) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
-                items: [
-                  BottomNavigatorItemComponent(
-                    activeIcon: AppIcons.homeActive,
-                    icon: AppIcons.home,
-                    label: 'Início',
+          child: NestedScrollView(
+              physics: BouncingScrollPhysics(),
+              headerSliverBuilder: (context, innerBoxIsScrolled) {
+                return [
+                  HeaderLocationComponent(
+                    location: 'Avenida 22, 1511',
                   ),
-                  BottomNavigatorItemComponent(
-                    activeIcon: AppIcons.searchActive,
-                    icon: AppIcons.search,
-                    label: 'Busca',
+                  ContentTabBarComponent(
+                    controller: tabController,
+                    onTap: (index) {},
+                  )
+                ];
+              },
+              body: Column(
+                children: [
+                  Expanded(
+                    child: RefreshIndicator(
+                      onRefresh: () async => await Future.value(),
+                      child: CustomScrollView(
+                        physics: BouncingScrollPhysics(),
+                        slivers: [
+                          SliverToBoxAdapter(
+                            child: SizedBox(
+                                height: 86,
+                                child: ListView.builder(
+                                  physics: BouncingScrollPhysics(),
+                                  itemCount: categorys.length,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) => Padding(
+                                    padding: EdgeInsets.only(
+                                        left: index == 0 ? 16 : 0,
+                                        right: index == categorys.length - 1
+                                            ? 16
+                                            : 8),
+                                    child:
+                                        CategoryItemComponent(categorys[index]),
+                                  ),
+                                )),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                  BottomNavigatorItemComponent(
-                    activeIcon: AppIcons.ordersActive,
-                    icon: AppIcons.orders,
-                    label: 'Pedidos',
-                  ),
-                  BottomNavigatorItemComponent(
-                    activeIcon: AppIcons.profileActive,
-                    icon: AppIcons.profile,
-                    label: 'Perfil',
+                  BottomNavigatorComponent(
+                    currentIndex: _currentIndex,
+                    onTap: (index) {
+                      setState(() {
+                        _currentIndex = index;
+                      });
+                    },
+                    items: [
+                      BottomNavigatorItemComponent(
+                        activeIcon: AppIcons.homeActive,
+                        icon: AppIcons.home,
+                        label: 'Início',
+                      ),
+                      BottomNavigatorItemComponent(
+                        activeIcon: AppIcons.searchActive,
+                        icon: AppIcons.search,
+                        label: 'Busca',
+                      ),
+                      BottomNavigatorItemComponent(
+                        activeIcon: AppIcons.ordersActive,
+                        icon: AppIcons.orders,
+                        label: 'Pedidos',
+                      ),
+                      BottomNavigatorItemComponent(
+                        activeIcon: AppIcons.profileActive,
+                        icon: AppIcons.profile,
+                        label: 'Perfil',
+                      )
+                    ],
                   )
                 ],
-              )
-            ],
-          )),
-    ));
+              )),
+        ));
   }
 }
