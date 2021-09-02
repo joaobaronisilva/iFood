@@ -28,17 +28,34 @@ class _FiltersComponentDelegate extends SliverPersistentHeaderDelegate {
       color: AppColors.white,
       height: 54,
       child: ListView(
+        physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         children: [
           SizedBox(width: 16),
           FilterItemComponent(
             label: 'Ordenar',
+            icon: AppIcons.arrowDown,
           ),
           FilterItemComponent(
-            label: 'Ordenar',
+            label: 'Pra Retirar',
           ),
           FilterItemComponent(
-            label: 'Ordenar',
+            label: 'Entrega Grátis',
+          ),
+          FilterItemComponent(
+            label: 'Vale Refeição',
+          ),
+          FilterItemComponent(
+            label: 'Distância',
+            icon: AppIcons.arrowDown,
+          ),
+          FilterItemComponent(
+            label: 'Entrega Parceira',
+            icon: AppIcons.arrowDown,
+          ),
+          FilterItemComponent(
+            label: 'Filtros',
+            icon: AppIcons.arrowDown,
           ),
           SizedBox(width: 16),
         ],
@@ -67,19 +84,29 @@ class FilterItemComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 12, bottom: 12, right: 8),
+      padding: EdgeInsets.only(top: 14, bottom: 12, right: 8),
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(32), color: Colors.blue),
+          border: Border.all(color: Colors.grey[200]!),
+          borderRadius: BorderRadius.circular(32),
+        ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             children: [
               Text(
                 label,
-                style: TextStyle(color: Colors.grey[700]),
+                style: AppTypography.filterTextStyle(context)
+                    ?.copyWith(color: Colors.grey[700]),
               ),
-              if (icon != '') AppIcon(icon)
+              if (icon != '')
+                Padding(
+                  padding: EdgeInsets.only(left: 2),
+                  child: AppIcon(
+                    icon,
+                    size: Size(14, 14),
+                  ),
+                )
             ],
           ),
         ),

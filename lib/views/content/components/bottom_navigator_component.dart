@@ -18,7 +18,7 @@ class BottomNavigatorComponent extends StatelessWidget {
         children: [
           Container(
             height: 1,
-            color: Colors.grey[300],
+            color: Colors.grey[200],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),

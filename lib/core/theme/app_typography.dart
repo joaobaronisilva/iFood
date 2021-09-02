@@ -21,10 +21,10 @@ class AppTypography {
   }
 
   static TextStyle? filterTextStyle(BuildContext context) {
-    return Theme.of(context).textTheme.overline?.copyWith(
-          fontWeight: FontWeight.w700,
-          color: AppColors.primaryColor,
-        );
+    return Theme.of(context).textTheme.bodyText1?.copyWith(
+        fontWeight: FontWeight.normal,
+        color: AppColors.primaryColor,
+        fontSize: 13);
   }
 
   static TextStyle? small(BuildContext context) {
