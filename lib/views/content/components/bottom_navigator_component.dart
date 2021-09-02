@@ -16,6 +16,10 @@ class BottomNavigatorComponent extends StatelessWidget {
       decoration: BoxDecoration(color: AppColors.white),
       child: Column(
         children: [
+          Container(
+            height: 1,
+            color: Colors.grey[300],
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: Row(

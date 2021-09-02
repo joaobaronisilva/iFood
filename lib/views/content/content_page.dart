@@ -8,6 +8,7 @@ import 'package:ifood/views/content/components/header_local_component.dart';
 import 'components/bottom_navigator_component.dart';
 import 'components/category_item_component.dart';
 import 'components/content_tab_bar_component.dart';
+import 'components/filters_component.dart';
 
 class ContentPage extends StatefulWidget {
   const ContentPage({Key? key}) : super(key: key);
@@ -46,7 +47,8 @@ class _ContentPageState extends State<ContentPage>
                   ContentTabBarComponent(
                     controller: tabController,
                     onTap: (index) {},
-                  )
+                  ),
+                  FiltersComponent(),
                 ];
               },
               body: Column(
